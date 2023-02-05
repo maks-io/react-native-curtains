@@ -1,0 +1,22 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "noEmit": false,
+    "baseUrl": "src",
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "lib": ["ES2020"],
+    "moduleResolution": "Node",
+    "declaration": true,
+    "jsx": "react-native",
+    "strict": true,
+    "outDir": "build",
+    "skipLibCheck": true,
+    "paths": {
+      "$/*": ["./*"]
+    },
+    "types": []
+  },
+  "include": ["src", "build"],
+  "exclude": ["node_modules"]
+}

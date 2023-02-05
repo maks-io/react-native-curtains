@@ -1,0 +1,62 @@
+{
+  "name": "react-native-curtains",
+  "version": "1.0.0",
+  "description": "Lightweight helper lib for mounting + unmounting of child elements in an animated 'curtain' style",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "keywords": [
+    "react native",
+    "animation",
+    "mount",
+    "unmount",
+    "columns",
+    "react-spring",
+    "react-native-reanimated"
+  ],
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "clear-build-folder": "rm -rf ./build",
+    "transpile": "tsc",
+    "fix-paths": "tsc-alias",
+    "build": "yarn clear-build-folder && yarn transpile && yarn fix-paths",
+    "dev": "yarn nodemon"
+  },
+  "files": [
+    "build"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maks-io/react-native-curtains.git"
+  },
+  "author": "Markus Kurzmann <markus@kurzmann.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maks-io/react-native-curtains/issues"
+  },
+  "homepage": "https://github.com/maks-io/react-native-curtains#readme",
+  "peerDependencies": {
+    "@react-spring/native": "^9.6.1",
+    "react-native-reanimated": "^2.14.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@react-spring/native": "^9.6.1",
+    "@types/react": "~18.0.14",
+    "@types/react-native": "~0.70.6",
+    "expo": "~47.0.12",
+    "expo-status-bar": "~1.4.2",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.3",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "react-native": "0.70.5",
+    "react-native-reanimated": "^2.14.4",
+    "react-native-web": "~0.18.9",
+    "tsc": "^2.0.4",
+    "tsc-alias": "^1.8.2",
+    "typescript": "^4.6.3"
+  }
+}
