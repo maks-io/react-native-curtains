@@ -1,6 +1,6 @@
 {
   "name": "react-native-curtains",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lightweight helper lib for mounting + unmounting of child elements in an animated 'curtain' style",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -37,10 +37,6 @@
     "url": "https://github.com/maks-io/react-native-curtains/issues"
   },
   "homepage": "https://github.com/maks-io/react-native-curtains#readme",
-  "peerDependencies": {
-    "@react-spring/native": "^9.6.1",
-    "react-native-reanimated": "^2.14.4"
-  },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@react-spring/native": "^9.6.1",
