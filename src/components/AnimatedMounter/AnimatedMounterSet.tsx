@@ -9,6 +9,7 @@ import { Easing, Lib } from "$/types";
 
 interface AnimatedMounterSetProps<P> {
   lib: Lib;
+  AnimationModule: any;
   set: JSX.Element[];
   keyForElemFn: (child: JSX.Element) => string;
   styleFn?: (child: JSX.Element) => object;
@@ -19,6 +20,7 @@ interface AnimatedMounterSetProps<P> {
 
 export const AnimatedMounterSet = <P extends unknown>({
   lib,
+  AnimationModule,
   set,
   keyForElemFn,
   styleFn,
@@ -27,53 +29,6 @@ export const AnimatedMounterSet = <P extends unknown>({
   easing,
 }: AnimatedMounterSetProps<P>) => {
   const [prevCopy, setPrevCopy] = useState<JSX.Element[]>([]);
-  const [SpringModule, setSpringModule] = useState<{
-    useTransition: any;
-    animated: any;
-    error?: true;
-  }>({
-    useTransition: () => {},
-    animated: null,
-  });
-  const [ReanimatedModule, setReanimatedModule] = useState<{
-    View: any;
-    Easing: any;
-    useAnimatedReaction: any;
-    useAnimatedStyle: any;
-    useSharedValue: any;
-    withTiming: any;
-    error?: true;
-  }>({
-    View,
-    Easing: {},
-    useAnimatedReaction: () => {},
-    useAnimatedStyle: () => {},
-    useSharedValue: () => ({ value: 1 }),
-    withTiming: null,
-  });
-
-  useEffect(() => {
-    const initSpringModule = async () => {
-      try {
-        const module = await import("@react-spring/native");
-        setSpringModule(module);
-      } catch (e) {
-        setSpringModule((prevState) => ({ ...prevState, error: true }));
-      }
-    };
-    const initReanimatedModule = async () => {
-      try {
-        const module = await import("react-native-reanimated");
-        setReanimatedModule({ ...module, View: module.default.View });
-      } catch (e) {
-        setReanimatedModule((prevState) => ({ ...prevState, error: true }));
-        // do nothing
-      }
-    };
-
-    initSpringModule();
-    initReanimatedModule();
-  }, []);
 
   useEffect(() => {
     const updatePrevCopy = async () => {
@@ -104,9 +59,9 @@ export const AnimatedMounterSet = <P extends unknown>({
 
   const nrOfElementsToRender = elementsToRender.length;
 
-  if (lib === "spring" && SpringModule.error) {
+  if (lib === "spring" && AnimationModule.error) {
     return <MountingErrorDisplay lib={"spring"} />;
-  } else if (lib === "reanimated" && ReanimatedModule.error) {
+  } else if (lib === "reanimated" && AnimationModule.error) {
     return <MountingErrorDisplay lib={"reanimated"} />;
   }
 
@@ -123,14 +78,11 @@ export const AnimatedMounterSet = <P extends unknown>({
           easing,
         };
         return lib === "reanimated" ? (
-          <AnimatedMounterColumnReanminated
-            {...columnProps}
-            Module={ReanimatedModule}
-          >
+          <AnimatedMounterColumnReanminated {...columnProps} AnimationModule={AnimationModule}>
             {ComponentToMount(elem)}
           </AnimatedMounterColumnReanminated>
         ) : (
-          <AnimatedMounterColumnSpring {...columnProps} Module={SpringModule}>
+          <AnimatedMounterColumnSpring {...columnProps} AnimationModule={AnimationModule}>
             {ComponentToMount(elem)}
           </AnimatedMounterColumnSpring>
         );

@@ -12,6 +12,7 @@ export type Easing =
 
 interface ReactNativeCurtainsBaseProps {
   lib: Lib;
+  AnimationModule: any;
   children: JSX.Element[];
   animationDuration?: number;
 }

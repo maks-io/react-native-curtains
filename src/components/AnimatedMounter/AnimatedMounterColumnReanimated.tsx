@@ -3,7 +3,7 @@ import { Text, View } from "react-native";
 import { Easing } from "$/types";
 
 interface AnimatedMounterColumnProps {
-  Module: any;
+  AnimationModule: any;
   children: ReactNode;
   show: boolean;
   keyForElement: string;
@@ -12,7 +12,7 @@ interface AnimatedMounterColumnProps {
 }
 
 export default function ({
-  Module,
+  AnimationModule,
   children,
   show,
   keyForElement,
@@ -20,13 +20,13 @@ export default function ({
   easing,
 }: AnimatedMounterColumnProps) {
   const {
-    View: AnimatedView,
     Easing,
     useAnimatedReaction,
     useAnimatedStyle,
     useSharedValue,
     withTiming,
-  } = Module;
+  } = AnimationModule;
+  const AnimatedView = AnimationModule.default.View;
 
   const flex = useSharedValue(0);
 

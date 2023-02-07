@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import { Text, View } from "react-native";
 
 interface AnimatedMounterColumnProps {
-  Module: any;
+  AnimationModule: any;
   children: ReactNode;
   show: boolean;
   keyForElement: string;
@@ -11,14 +11,14 @@ interface AnimatedMounterColumnProps {
 }
 
 export default function ({
-  Module,
+  AnimationModule,
   children,
   show,
   keyForElement,
   style,
   animationDuration,
 }: AnimatedMounterColumnProps) {
-  const { useTransition, animated } = Module;
+  const { useTransition, animated } = AnimationModule;
 
   const transitions = useTransition(show, {
     from: { flex: 0, scale: 0 },
@@ -30,7 +30,7 @@ export default function ({
     },
   });
 
-  if (!Module?.animated) {
+  if (!AnimationModule?.animated) {
     return (
       <View>
         <Text>trying to load spring...</Text>
