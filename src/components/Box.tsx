@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode } from "react";
+import React, { PropsWithChildren } from "react";
 import { LayoutChangeEvent, View } from "react-native";
 
 export interface BoxProps {
