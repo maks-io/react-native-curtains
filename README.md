@@ -14,6 +14,9 @@ Lightweight helper lib for mounting + unmounting of child elements in an animate
 
 <img height="600" alt="react-native-curtains-demo-linear-gif" src="documentation/gifs/react-native-curtains-linear.gif" />
 
+## Live Demo
+Try it out via [this expo snack](https://snack.expo.dev/@maks-io/react-native-curtains-demo?platform=web).
+
 ## Highlights
 
 - lightweight

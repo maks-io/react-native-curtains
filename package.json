@@ -1,6 +1,6 @@
 {
   "name": "react-native-curtains",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Lightweight helper lib for mounting + unmounting of child elements in an animated 'curtain' style",
   "main": "build/index.js",
   "types": "build/index.d.ts",
