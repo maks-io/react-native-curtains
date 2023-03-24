@@ -44,7 +44,7 @@ npm i react-native-curtains --save
 And for yarn use:
 
 ```bash
-yarn add react-floating-debugger
+yarn add react-native-curtains
 ```
 
 ## Usage
