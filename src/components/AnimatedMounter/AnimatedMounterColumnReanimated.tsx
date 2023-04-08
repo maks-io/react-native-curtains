@@ -85,8 +85,6 @@ export default function ({
     return child;
   });
 
-  // TODO console.log("DEBUG childrenWithProps", childrenWithProps);
-
   return (
     <AnimatedView style={styleRNA} key={keyForElement}>
       {childrenWithProps}
