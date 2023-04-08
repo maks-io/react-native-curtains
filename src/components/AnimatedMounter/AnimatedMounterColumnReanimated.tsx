@@ -29,6 +29,8 @@ export default function ({
   const AnimatedView = AnimationModule.default.View;
 
   const flex = useSharedValue(0);
+  const zIndex = useSharedValue(0);
+  const hideOverflow = useSharedValue(true);
 
   useAnimatedReaction(
     () => {
@@ -37,8 +39,10 @@ export default function ({
     (showResult: boolean) => {
       if (showResult) {
         flex.value = 1;
+        hideOverflow.value = true;
       } else {
         flex.value = 0;
+        hideOverflow.value = true;
       }
     },
     [show]
@@ -47,12 +51,22 @@ export default function ({
   const styleRNA = useAnimatedStyle(() => {
     return {
       flex: withTiming
-        ? withTiming(flex.value, {
-            duration: animationDuration,
-            easing: Easing[easing],
-          })
+        ? withTiming(
+            flex.value,
+            {
+              duration: animationDuration,
+              easing: Easing[easing],
+            },
+            (isFinished: boolean) => {
+              if (isFinished) {
+                hideOverflow.value = false;
+              }
+            }
+          )
         : 0,
       width: flex.value === 0 ? 0 : undefined,
+      zIndex: zIndex.value,
+      overflow: hideOverflow.value === true ? "hidden" : "visible",
     };
   }, [show]);
 
@@ -64,9 +78,18 @@ export default function ({
     );
   }
 
+  const childrenWithProps = React.Children.map(children, (child) => {
+    if (React.isValidElement(child)) {
+      return React.cloneElement<any>(child, { zIndex });
+    }
+    return child;
+  });
+
+  // TODO console.log("DEBUG childrenWithProps", childrenWithProps);
+
   return (
     <AnimatedView style={styleRNA} key={keyForElement}>
-      {children}
+      {childrenWithProps}
     </AnimatedView>
   );
 }

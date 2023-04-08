@@ -17,14 +17,7 @@ export const ReactNativeCurtains = <T extends unknown>({
         AnimationModule={AnimationModule}
         set={children}
         keyForElemFn={(child: JSX.Element) => `column-${child.key}`}
-        ComponentToMount={(child: JSX.Element) => (
-          <Box
-            key={`column-container-${child.key}`}
-            style={{ overflow: "hidden" }}
-          >
-            <Box style={{ overflow: "hidden" }}>{child}</Box>
-          </Box>
-        )}
+        ComponentToMount={(child: JSX.Element) => child}
         animationDuration={animationDuration}
         easing={easing}
       />
