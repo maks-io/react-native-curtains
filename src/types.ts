@@ -15,6 +15,7 @@ interface ReactNativeCurtainsBaseProps {
   AnimationModule: any;
   children: JSX.Element[];
   animationDuration?: number;
+  useHorizontalCurtains?: boolean;
 }
 
 interface ReactNativeCurtainsWithReanimatedProps

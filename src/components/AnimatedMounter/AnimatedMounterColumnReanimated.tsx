@@ -6,6 +6,7 @@ interface AnimatedMounterColumnProps {
   AnimationModule: any;
   children: ReactNode;
   show: boolean;
+  useHorizontalCurtains: boolean;
   keyForElement: string;
   animationDuration: number;
   easing: Easing;
@@ -18,6 +19,7 @@ export default function ({
   keyForElement,
   animationDuration,
   easing,
+  useHorizontalCurtains,
 }: AnimatedMounterColumnProps) {
   const {
     Easing,
@@ -64,7 +66,7 @@ export default function ({
             }
           )
         : 0,
-      width: flex.value === 0 ? 0 : undefined,
+      width: useHorizontalCurtains ? "100%" : flex.value === 0 ? 0 : undefined,
       zIndex: zIndex.value,
       overflow: hideOverflow.value === true ? "hidden" : "visible",
     };
@@ -72,7 +74,7 @@ export default function ({
 
   if (!AnimatedView) {
     return (
-      <View>
+      <View key={`fallback-for-column-${keyForElement}`}>
         <Text>trying to load reanimated...</Text>
       </View>
     );
@@ -80,7 +82,10 @@ export default function ({
 
   const childrenWithProps = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
-      return React.cloneElement<any>(child, { zIndex });
+      return React.cloneElement<any>(child, {
+        key: `${child.key}`,
+        zIndexAnimated: zIndex,
+      });
     }
     return child;
   });

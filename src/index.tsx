@@ -9,9 +9,14 @@ export const ReactNativeCurtains = <T extends unknown>({
   children,
   animationDuration = 500,
   easing = "linear",
+  useHorizontalCurtains = false,
 }: ReactNativeCurtainsProps): JSX.Element => {
   return (
-    <Box style={{ flex: 1 }}>
+    <Box
+      style={{
+        flex: 1,
+      }}
+    >
       <AnimatedMounterSet<T>
         lib={lib}
         AnimationModule={AnimationModule}
@@ -20,6 +25,7 @@ export const ReactNativeCurtains = <T extends unknown>({
         ComponentToMount={(child: JSX.Element) => child}
         animationDuration={animationDuration}
         easing={easing}
+        useHorizontalCurtains={useHorizontalCurtains}
       />
     </Box>
   );

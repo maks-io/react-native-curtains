@@ -16,6 +16,7 @@ interface AnimatedMounterSetProps<P> {
   ComponentToMount: (child: JSX.Element) => ReactNode;
   animationDuration: number;
   easing: Easing;
+  useHorizontalCurtains: boolean;
 }
 
 export const AnimatedMounterSet = <P extends unknown>({
@@ -27,6 +28,7 @@ export const AnimatedMounterSet = <P extends unknown>({
   ComponentToMount,
   animationDuration,
   easing,
+  useHorizontalCurtains,
 }: AnimatedMounterSetProps<P>) => {
   const [prevCopy, setPrevCopy] = useState<JSX.Element[]>([]);
 
@@ -66,7 +68,12 @@ export const AnimatedMounterSet = <P extends unknown>({
   }
 
   return (
-    <Box style={{ flex: 1, flexDirection: "row" }}>
+    <Box
+      style={{
+        flex: 1,
+        flexDirection: useHorizontalCurtains ? "column" : "row",
+      }}
+    >
       {elementsToRender.map((elem: JSX.Element) => {
         const columnProps = {
           key: keyForElemFn(elem),
@@ -76,13 +83,20 @@ export const AnimatedMounterSet = <P extends unknown>({
           style: styleFn ? styleFn(elem) : {},
           animationDuration: animationDuration,
           easing,
+          useHorizontalCurtains,
         };
         return lib === "reanimated" ? (
-          <AnimatedMounterColumnReanminated {...columnProps} AnimationModule={AnimationModule}>
+          <AnimatedMounterColumnReanminated
+            {...columnProps}
+            AnimationModule={AnimationModule}
+          >
             {ComponentToMount(elem)}
           </AnimatedMounterColumnReanminated>
         ) : (
-          <AnimatedMounterColumnSpring {...columnProps} AnimationModule={AnimationModule}>
+          <AnimatedMounterColumnSpring
+            {...columnProps}
+            AnimationModule={AnimationModule}
+          >
             {ComponentToMount(elem)}
           </AnimatedMounterColumnSpring>
         );
