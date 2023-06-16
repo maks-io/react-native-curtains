@@ -8,11 +8,15 @@ Lightweight helper lib for mounting + unmounting of child elements in an animate
 
 ### With 'bounce' animation:
 
-<img height="600" alt="react-native-curtains-demo-bounce-gif" src="documentation/gifs/react-native-curtains-bounce.gif" />
+<img height="520" alt="react-native-curtains-demo-bounce-gif" src="documentation/gifs/react-native-curtains-bounce.gif" />
 
 ### With 'linear' animation:
 
-<img height="600" alt="react-native-curtains-demo-linear-gif" src="documentation/gifs/react-native-curtains-linear.gif" />
+<img height="520" alt="react-native-curtains-demo-linear-gif" src="documentation/gifs/react-native-curtains-linear.gif" />
+
+### Horizontal version:
+
+<img height="520" alt="react-native-curtains-demo-horizontal-gif" src="documentation/gifs/react-native-curtains-horizontal.gif" />
 
 ## Live Demos
 
@@ -117,3 +121,7 @@ There are Pros and Cons for either library, I will quickly try to summarize what
 In general one might want to re-use a library if it is already part of a app. If you have already setup `react-native-reanimated`, there is no need to add an additional dependency, and vice versa.
 At least, almost... `react-native-reanimated` behaves more smoothly, especially when using slower animation durations and quickly mounting/unmounting multiple children within a short time frame. With the `@react-spring/native` this might lead to visual glitches.
 So it depends on your use case. Also, it does only allow to animate in a "linear" way, while reanimated allows multiple easing functions. One upside for spring is the easier way to set it up initially (just install it and you should be good to go, reanimated on the other hand would take some additional setup steps, see their docs for details).
+
+## Misc
+
+[Youtube playlist for react-native-curtains videos](https://www.youtube.com/playlist?list=PLz7X-_iH1H1G5MNe5fCN5PhIlODEB_onO)
