@@ -1,6 +1,6 @@
 {
   "name": "react-native-curtains",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Lightweight helper lib for mounting + unmounting of child elements in an animated 'curtain' style",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -38,21 +38,21 @@
   },
   "homepage": "https://github.com/maks-io/react-native-curtains#readme",
   "devDependencies": {
-    "@babel/core": "^7.22.5",
-    "@react-spring/native": "^9.7.2",
-    "@types/react": "~18.0.27",
-    "@types/react-native": "~0.72.2",
-    "expo": "~48.0.19",
-    "expo-status-bar": "~1.4.4",
-    "nodemon": "^2.0.22",
-    "prettier": "^2.8.8",
+    "@babel/core": "^7.23.3",
+    "@react-spring/native": "^9.7.3",
+    "@types/react": "~18.2.37",
+    "@types/react-native": "~0.72.6",
+    "expo": "~49.0.18",
+    "expo-status-bar": "~1.7.1",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-native": "0.71.8",
-    "react-native-reanimated": "~2.14.4",
-    "react-native-web": "~0.18.10",
+    "react-native": "0.72.7",
+    "react-native-reanimated": "~3.5.4",
+    "react-native-web": "~0.19.9",
     "tsc": "^2.0.4",
-    "tsc-alias": "^1.8.6",
-    "typescript": "^4.9.4"
+    "tsc-alias": "^1.8.8",
+    "typescript": "^5.2.2"
   }
 }

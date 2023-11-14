@@ -1,5 +1,4 @@
 import React, { ReactNode, useEffect, useMemo, useState } from "react";
-import { View } from "react-native";
 import { Box } from "$/components/Box";
 import AnimatedMounterColumnReanminated from "$/components/AnimatedMounter/AnimatedMounterColumnReanimated";
 import AnimatedMounterColumnSpring from "$/components/AnimatedMounter/AnimatedMounterColumnSpring";
@@ -48,15 +47,15 @@ export const AnimatedMounterSet = <P extends unknown>({
     () =>
       prevCopy
         ? prevCopy?.filter(
-            (prevElem) => !set?.map((c) => c.key).includes(prevElem.key)
+            (prevElem) => !set?.map((c) => c.key).includes(prevElem.key),
           )
         : [],
-    [prevCopy, set]
+    [prevCopy, set],
   );
 
   const elementsToRender = useMemo(
     () => (set.length >= prevCopy.length ? set : prevCopy),
-    [set, prevCopy]
+    [set, prevCopy],
   );
 
   const nrOfElementsToRender = elementsToRender.length;
