@@ -29,7 +29,15 @@ export const AnimatedMounterSet = <P extends unknown>({
   easing,
   useHorizontalCurtains,
 }: AnimatedMounterSetProps<P>) => {
+  const [keys, setKeys] = useState<string[]>(set.map((c) => c.key as string));
   const [prevCopy, setPrevCopy] = useState<JSX.Element[]>([]);
+
+  useEffect(() => {
+    const newKeys = set.map((c) => c.key as string);
+    if (newKeys !== keys) {
+      setKeys(newKeys);
+    }
+  }, [set]);
 
   useEffect(() => {
     const updatePrevCopy = async () => {
@@ -41,21 +49,21 @@ export const AnimatedMounterSet = <P extends unknown>({
       }
     };
     updatePrevCopy();
-  }, [set]);
+  }, [keys]);
 
   const elementsToHide = useMemo(
     () =>
       prevCopy
         ? prevCopy?.filter(
-            (prevElem) => !set?.map((c) => c.key).includes(prevElem.key),
+            (prevElem) => !set?.map((c) => c.key).includes(prevElem.key)
           )
         : [],
-    [prevCopy, set],
+    [prevCopy, set]
   );
 
   const elementsToRender = useMemo(
     () => (set.length >= prevCopy.length ? set : prevCopy),
-    [set, prevCopy],
+    [set, prevCopy]
   );
 
   const nrOfElementsToRender = elementsToRender.length;
